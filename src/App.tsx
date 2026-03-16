@@ -1,3 +1,4 @@
+import { AIChatDrawer } from "@/components/ai-chat";
 import { BookSelector } from "@/components/book-selector";
 import { Header } from "@/components/header";
 import { Reader } from "@/components/reader";
@@ -21,6 +22,7 @@ export default function App() {
       </main>
 
       <BookSelector />
+      <AIChatDrawer />
       <div className="fixed w-full h-10 bg-linear-to-b from-transparent to-background/90 bottom-0" />
     </div>
   );

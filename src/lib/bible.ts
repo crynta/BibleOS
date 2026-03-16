@@ -1,13 +1,18 @@
-import { invoke } from "@tauri-apps/api/core";
 import type { BookInfo, Verse } from "./types";
+import { getDb } from "./db";
 
 export async function getBooks(): Promise<BookInfo[]> {
-  return invoke<BookInfo[]>("get_books");
+  const db = await getDb();
+  return db.select<BookInfo[]>("SELECT name, chapters FROM books ORDER BY id");
 }
 
 export async function getChapter(
   book: string,
   chapter: number,
 ): Promise<Verse[]> {
-  return invoke<Verse[]>("get_chapter", { book, chapter });
+  const db = await getDb();
+  return db.select<Verse[]>(
+    "SELECT verse, text FROM verses WHERE book = ? AND chapter = ? ORDER BY rowid",
+    [book, chapter],
+  );
 }

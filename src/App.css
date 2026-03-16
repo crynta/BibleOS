@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
+@import "streamdown/styles.css";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -130,5 +132,78 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+
+/* ── AI message markdown ─────────────────────────────────────────── */
+
+.ai-message {
+  color: var(--foreground);
+
+  p { margin: 0.2em 0; line-height: 1.7; }
+  p:first-child { margin-top: 0; }
+  p:last-child { margin-bottom: 0; }
+
+  h1, h2, h3, h4 {
+    font-weight: 600;
+    margin: 0.75em 0 0.25em;
+    line-height: 1.3;
+  }
+  h1 { font-size: 0.95rem; }
+  h2 { font-size: 0.875rem; }
+  h3, h4 { font-size: 0.8125rem; }
+
+  strong { font-weight: 600; color: var(--foreground); }
+  em { color: color-mix(in oklch, var(--foreground) 80%, transparent); }
+
+  code {
+    font-family: ui-monospace, monospace;
+    font-size: 0.75rem;
+    background: var(--muted);
+    color: var(--foreground);
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+  }
+
+  pre {
+    background: var(--muted);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+    margin: 0.5em 0;
+    code {
+      background: none;
+      padding: 0;
+      font-size: 0.75rem;
+    }
+  }
+
+  ul, ol {
+    padding-left: 1.25rem;
+    margin: 0.25em 0;
+    li { margin: 0.15em 0; line-height: 1.6; }
+  }
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
+
+  blockquote {
+    border-left: 2px solid var(--border);
+    padding-left: 0.75rem;
+    margin: 0.5em 0;
+    color: var(--muted-foreground);
+    font-style: italic;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0.75em 0;
   }
 }

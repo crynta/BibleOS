@@ -9,9 +9,6 @@
     "main"
   ],
   "permissions": [
-    "positioner:default",
-    "global-shortcut:default",
-    "autostart:default",
     "store:default",
     "window-state:default",
     "core:window:allow-start-dragging"

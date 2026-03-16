@@ -8,8 +8,13 @@
   "permissions": [
     "core:default",
     "opener:default",
-    "notification:default",
     "store:default",
-    "sql:default"
+    "sql:default",
+    "fs:allow-read-file",
+    "fs:allow-write-file",
+    "fs:allow-exists",
+    "fs:allow-mkdir",
+    "fs:scope-resource-recursive",
+    "fs:scope-appdata-recursive"
   ]
 }

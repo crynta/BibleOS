@@ -1,8 +1,8 @@
 [package]
 name = "bible-os"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "A lightweight Bible reader with integrated AI chat"
+authors = []
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -19,17 +19,17 @@ tauri-build = { version = "2", features = [] }
 
 [dependencies]
 tauri = { version = "2", features = ["macos-private-api"] }
+tauri-plugin-fs = "2"
 tauri-plugin-opener = "2"
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-tauri-plugin-notification = "2"
 tauri-plugin-store = "2"
-tantivy = "0.25.0"
 tauri-plugin-sql = { version = "2", features = ["sqlite"] }
 
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
-tauri-plugin-autostart = "2"
-tauri-plugin-global-shortcut = "2"
-tauri-plugin-positioner = "2"
 tauri-plugin-window-state = "2"
 
+[profile.release]
+panic = "abort"   # strip panic clean-up logic
+codegen-units = 1 # compile one crate at a time for better inlini/ptimization
+lto = true        # link-time optimization across crates
+opt-level = "s"   # optimize for binary size
+strip = true      # strip debug symbols from the binary
