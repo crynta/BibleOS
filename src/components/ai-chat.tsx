@@ -4,7 +4,7 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
-import { useApiKey } from "@/hooks/api-key";
+import { useApiKey } from "@/lib/api-key";
 import { useChatStore } from "@/stores/chat";
 import { ApiKeyForm, ChatBody } from "./chat-body";
 

@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Kbd } from "@/components/ui/kbd";
-import { useApiKey } from "@/hooks/api-key";
+import { useApiKey } from "@/lib/api-key";
 import { useTheme } from "@/lib/theme-provider";
 import { ReaderView } from "@/lib/types";
 import { useChatStore } from "@/stores/chat";

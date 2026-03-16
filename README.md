@@ -4,6 +4,7 @@
   <p><strong>A beautiful, lightweight Bible reader app with integrated AI chat</strong></p>
   <p>
     <a href="#features">Features</a> •
+    <a href="#planned-features">Planned</a> •
     <a href="#installation">Installation</a> •
     <a href="#development">Development</a> •
     <a href="#tech-stack">Tech Stack</a>
@@ -12,23 +13,33 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
-**Bible OS** is a personal, open-source Bible reader application designed for deep Bible study and spiritual growth. Built with modern technologies (Rust, Tauri, React), it delivers a tiny (~20-30MB), fast, and beautifully designed desktop experience.
+**Bible OS** is an open-source Bible reader application designed for Bible study and spiritual growth. Built with modern technologies (Rust, Tauri, React, Shadcn), it delivers a tiny (~10-20MB), fast, and beautifully designed desktop experience.
 
-The app combines a powerful Bible reader with AI-powered capabilities for discussing scripture, generating spiritual content, and discovering deeper context—all offline-first and privacy-conscious.
+The app combines a Bible reader with AI-powered capabilities for discussing scripture, generating spiritual content, and discovering deeper context—all offline-first and privacy-conscious.
 
-## ✨ Features
+## Features
 
-- **📖 Powerful Bible Reader** - Clean, fast interface for reading through Bible books and chapters
-- **🔍 Advanced Search** - Quickly find books, chapters, and verses across the entire Bible
-- **🤖 AI Chat Integration** - Discuss scripture context, ask questions, and explore deeper meanings
-- **🌙 Dark/Light Mode** - Comfortable reading experience in any lighting condition
-- **⚡ Blazingly Fast** - Built with Rust and optimized for performance
-- **💾 Lightweight** - Minimal footprint without sacrificing functionality
-- **🔐 Privacy-First** - Your data stays on your machine
+- [x] Bible Reader - Clean, fast interface for reading through Bible books and chapters
+- [x] Fast Search - Quickly find books, chapters, and verses across the entire Bible
+- [x] AI Chat Integration - Discuss scripture context, ask questions, and explore deeper meanings
+- [x] Dark/Light Mode - Comfortable reading experience in any lighting condition
+- [x] Lightweight - Built with Tauri, minimal footprint without sacrificing functionality
+- [x] Privacy-First - Local. Your data stays on your machine, AI is BYOK
+- [x] Discover - Explore related content, commentaries, and insights based on your reading
 
-## 📸 Screenshots
+## Planned Features
+
+- [ ] Verse Highlighting and Annotations - Save and organize your favorite verses and notes
+- [ ] Note-Taking System - Create personal study notes tied to specific passages
+- [ ] Mobile Devices Support - iOS and Android apps via Tauri Mobile
+- [ ] Bible Versions Support - KJV, NIV, ESV, and more translations
+- [ ] Advanced Study Tools - Commentaries, cross-references, word studies
+- [ ] Export Capabilities - Export notes, highlights, and passages to PDF/Markdown
+- [ ] Advanced AI features - more models, RAG, memory, etc.
+
+## App Demo (macOS)
 
 <div align="center">
   <table>
@@ -54,37 +65,36 @@ The app combines a powerful Bible reader with AI-powered capabilities for discus
   </table>
 </div>
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
-- **React** v19 - Modern UI framework
-- **Vite** - Lightning-fast build tool
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** v4 - Utility-first styling
-- **shadcn/ui** - High-quality React components
-- **Zustand** - Lightweight state management
-- **React Router** - Client-side routing
+- **[React](https://react.dev)** v19 - Modern UI framework
+- **[Vite](https://vitejs.dev)** - Lightning-fast build tool
+- **[TypeScript](https://www.typescriptlang.org)** - Type-safe development
+- **[Tailwind CSS](https://tailwindcss.com)** v4 - Utility-first styling
+- **[shadcn/ui](https://ui.shadcn.com)** - High-quality React components
+- **[Zustand](https://github.com/pmndrs/zustand)** - Lightweight state management
+- **[React Router](https://reactrouter.com)** - Client-side routing
 
 ### Backend & Desktop
 
-- **Tauri** v2.0 - Cross-platform desktop framework
-- **Rust** - High-performance systems language
-- **SQLite** - Efficient data storage
-- **Tauri Plugins** - Native integrations (notifications, file system, global shortcuts)
+- **[Tauri](https://tauri.app)** v2.0 - Cross-platform desktop framework
+- **[Rust](https://www.rust-lang.org)** - High-performance systems language
+- **[SQLite](https://www.sqlite.org)** - Efficient data storage
 
 ### AI Features
 
-- **Vercel AI SDK** - Unified AI integration (Open to switching to custom SDK)
-- **OpenAI** - Language model capabilities
+- **[Vercel AI SDK](https://sdk.vercel.ai)** - Unified AI integration (Open to switching to custom SDK)
+- **[OpenAI](https://openai.com)** - Language model capabilities
 
 ### Additional Libraries
 
-- **Zod** - TypeScript-first schema validation
-- **Lucide React** - Icon library
-- **clsx** - Utility for classname management
+- **[clsx](https://github.com/lukeed/clsx)** - Utility for classname management
+- **radix-ui** - Headless UI components
+- **cmdk** - Command menu component
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 
@@ -107,13 +117,7 @@ The app combines a powerful Bible reader with AI-powered capabilities for discus
    pnpm install
    ```
 
-3. **Build the Bible database**
-
-   ```bash
-   pnpm db:build
-   ```
-
-4. **Start development server**
+3. **Start development server**
    ```bash
    pnpm tauri dev
    ```
@@ -129,9 +133,15 @@ pnpm build
 pnpm tauri build
 ```
 
+**Build the Bible database from sources (JSON)**
+
+```bash
+   pnpm db:build
+```
+
 This creates a distributable binary in `src-tauri/target/release/`.
 
-## 🚀 Development
+## Development
 
 ### Project Structure
 
@@ -139,14 +149,14 @@ This creates a distributable binary in `src-tauri/target/release/`.
 bible-os/
 ├── src/                  # React frontend
 │   ├── components/       # React components
-│   ├── lib/             # Utilities, API, types
+│   ├── lib/             # Utilities, API, hooks, types
 │   ├── stores/          # Zustand state stores
-│   ├── hooks/           # Custom React hooks
 │   └── App.tsx          # Main app component
 ├── src-tauri/           # Tauri backend (Rust)
 │   ├── src/             # Rust source code
 │   ├── Cargo.toml       # Rust dependencies
-│   └── resources/       # Bible data (JSON)
+│   └── resources/       # Bible data (SQLITE/JSON)
+├── scripts/							# Build and utility scripts
 └── demo/                # Demo screenshots
 ```
 
@@ -180,19 +190,17 @@ To enable AI features, you'll need an API key:
 2. Set your API key in the app settings
 3. Start chatting with the AI assistant about scripture
 
-## 🔧 Configuration
+## Configuration
 
-The app uses several Tauri plugins configured in `src-tauri/tauri.conf.json`:
+The app uses the following Tauri plugins configured in `src-tauri/tauri.conf.json`:
 
 - **sql**: SQLite database operations
-- **notification**: Desktop notifications
-- **autostart**: Launch app on system startup
-- **window-state**: Remember window position/size
-- **global-shortcut**: Keyboard shortcuts
 - **fs**: File system access
+- **window-state**: Remember window position/size
+- **store**: Persistent app configuration storage
 - **opener**: Open external links
 
-## 📝 Scripture Data Format
+## Scripture Data Format
 
 Bible data is stored as JSON files in `src-tauri/resources/books/`:
 
@@ -213,7 +221,7 @@ Bible data is stored as JSON files in `src-tauri/resources/books/`:
 }
 ```
 
-## 🤝 Contributing
+## Contributing
 
 This is a personal project with open-source code. Contributions are welcome! Feel free to:
 
@@ -222,18 +230,26 @@ This is a personal project with open-source code. Contributions are welcome! Fee
 - Submit pull requests
 - Improve documentation
 
-## 📄 License
+## License
 
-This project is open-source. See LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 💝 Acknowledgments
+```
+MIT License
 
-- Built by a developer passionate about Scripture and elegant software design
-- Uses high-quality open-source libraries and frameworks
-- Inspired by the need for a powerful, personal Bible study tool
+Copyright (c) 2026
 
----
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
 
 <div align="center">
-  <p>Made with ❤️ for Bible study and spiritual growth</p>
+  <p>Made for Bible study and spiritual growth</p>
 </div>
