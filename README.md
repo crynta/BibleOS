@@ -107,8 +107,8 @@ The app combines a Bible reader with AI-powered capabilities for discussing scri
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/bible-os.git
-   cd bible-os
+   git clone https://github.com/crynta/BibleOS.git
+   cd BibleOS
    ```
 
 2. **Install dependencies**
